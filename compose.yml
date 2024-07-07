@@ -1,0 +1,14 @@
+services:
+  flask_microblog:
+    container_name: flask_todo
+    build: ./app/
+    ports:
+      - 8080:5000
+    tty: true
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace
+    environment:
+      - FLASK_APP=app/app.py
+      - FLASK_DEBUG=1
+    # command: flask run --host=0.0.0.0

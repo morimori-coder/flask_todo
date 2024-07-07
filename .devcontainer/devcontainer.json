@@ -1,0 +1,13 @@
+{
+    "name": "flask-todo-container",
+    "service": "flask_microblog",
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": "../compose.yml",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python"
+            ]
+        }
+    }
+}
