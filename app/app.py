@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify
+from Model.todo import Todo
 
 app = Flask(__name__)
 
@@ -14,7 +15,10 @@ def hello():
 
 @app.route('/todo/', methods=['GET'])
 def get_todo():
-    return jsonify({'todo': 'Remember the milk'})
+    todo1 = Todo(description='サンプルのTODO1', deadline='2020-12-31', status='作業中')
+    todo2 = Todo(description='サンプルのTODO2', deadline='2020-12-31', status='未着手')
+    todos = [todo1, todo2]
+    return render_template('todo.html', todos=todos)
 
 def get_hello_message():
     return 'Hello, Flask'
