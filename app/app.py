@@ -12,6 +12,10 @@ def hello():
     message = get_hello_message()
     return jsonify({'message': message})
 
+@app.route('/todo/', methods=['GET'])
+def get_todo():
+    return jsonify({'todo': 'Remember the milk'})
+
 def get_hello_message():
     return 'Hello, Flask'
 
