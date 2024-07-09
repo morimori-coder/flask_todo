@@ -5,12 +5,20 @@
 </head>
 <body>
     <h1>Todo List</h1>
-    <ul>
+    <table>
+        <tr>
+            <th>内容</th>
+            <th>期限</th>
+            <th>チェック</th>
+        </tr>
         {% for todo in todos %}
-            <li>
-                {{ todo.description }} - Deadline: {{ todo.deadline }} - Status: {{ todo.status }}
-            </li>
+            <tr>
+                <td>{{ todo.description }}</td>
+                <td>{{ todo.deadline }}</td>
+                <td><input type="checkbox" {% if todo.status %}checked{% endif %}></td>
+            </tr>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>

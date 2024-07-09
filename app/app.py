@@ -15,8 +15,8 @@ def hello():
 
 @app.route('/todo/', methods=['GET'])
 def get_todo():
-    todo1 = Todo(description='サンプルのTODO1', deadline='2020-12-31', status='作業中')
-    todo2 = Todo(description='サンプルのTODO2', deadline='2020-12-31', status='未着手')
+    todo1 = Todo(description='サンプルのTODO1', deadline='2020-12-31')
+    todo2 = Todo(description='サンプルのTODO2ああああああ', deadline='2020-12-31')
     todos = [todo1, todo2]
     return render_template('todo.html', todos=todos)
 
