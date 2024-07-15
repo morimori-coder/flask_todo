@@ -3,25 +3,30 @@ from Model.todo import Todo
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def index():
     message = get_hello_message()
-    return render_template('index.html', api_message=message)
+    return render_template("index.html", api_message=message)
 
-@app.route('/api/hello')
+
+@app.route("/api/hello")
 def hello():
     message = get_hello_message()
-    return jsonify({'message': message})
+    return jsonify({"message": message})
 
-@app.route('/todo/', methods=['GET'])
+
+@app.route("/todo/", methods=["GET"])
 def get_todo():
-    todo1 = Todo(description='サンプルのTODO1', deadline='2020-12-31')
-    todo2 = Todo(description='サンプルのTODO2ああああああ', deadline='2020-12-31')
+    todo1 = Todo(description="サンプルのTODO1", deadline="2020-12-31")
+    todo2 = Todo(description="サンプルのTODO2ああああああ", deadline="2020-12-31")
     todos = [todo1, todo2]
-    return render_template('todo.html', todos=todos)
+    return render_template("todo.html", todos=todos)
+
 
 def get_hello_message():
-    return 'Hello, Flask'
+    return "Hello, Flask"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
