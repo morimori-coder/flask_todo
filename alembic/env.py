@@ -8,7 +8,6 @@ from sqlalchemy import pool
 
 from alembic import context
 from app.db import base
-from app import Model
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -24,23 +23,6 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-
-
-# Add an extra blank line here
-# マイグレーションに含めたいモジュールをimport
-def import_migration_module(module):
-    """マイグレーションに含めたいモジュールをimport."""        
-    for file_name in (p.name for p in Path(module).iterdir() if p.is_file()):
-        if file_name in {"__init__.py", "base.py"}:
-            continue
-        file_name = file_name.replace(".py", "")
-        module = module.replace("/", ".")
-        print(f"{module}.{file_name}")
-        import_module(f"{module}.{file_name}")
-
-
-# データモデルを記述しているディレクトリ名を指定
-import_migration_module("app/Model")
 
 target_metadata = base.Base.metadata
 
