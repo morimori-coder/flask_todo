@@ -9,7 +9,8 @@
                 "ms-python.python",
                 "github.copilot",
                 "ms-python.flake8",
-                "mikoz.black-py"
+                "mikoz.black-py",
+                "ms-ceintl.vscode-language-pack-ja"
             ]
         }
     }
