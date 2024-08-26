@@ -4,6 +4,11 @@ from Model.todo import Todo
 app = Flask(__name__)
 
 
+# 今後の実装方針
+# 1. blueprintを使って、ルーティングを分割する
+# 2. flaskのJinja2テンプレートの継承を使って、共通のレイアウトを作成する
+# 3. データベースを使って、TODOリストを管理する
+
 @app.route("/")
 def index():
     message = get_hello_message()
