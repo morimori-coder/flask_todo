@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime
 
 # from app.db.db_settings import engine
-from db.db_settings import Base
+from app.db.db_settings import Base
 
 
 class Todo(Base):
