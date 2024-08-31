@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Todo List</title>
-</head>
-<body>
-    <h1>Todo List</h1>
-    <table>
+{% extends 'base.html' %}
+
+{% block title %}TODO{% endblock %}
+
+{% block content %}
+<h1>Todo List</h1>
+<table>
+    <tr>
+        <th>内容</th>
+        <th>期限</th>
+        <th>チェック</th>
+    </tr>
+    {% for todo in todos %}
         <tr>
-            <th>内容</th>
-            <th>期限</th>
-            <th>チェック</th>
+            <td>{{ todo.description }}</td>
+            <td>{{ todo.deadline }}</td>
+            <td><input type="checkbox" {% if todo.status %}checked{% endif %}></td>
         </tr>
-        {% for todo in todos %}
-            <tr>
-                <td>{{ todo.description }}</td>
-                <td>{{ todo.deadline }}</td>
-                <td><input type="checkbox" {% if todo.status %}checked{% endif %}></td>
-            </tr>
-            </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
