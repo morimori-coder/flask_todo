@@ -1,8 +1,22 @@
-<!doctype html>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% block content %}{% endblock %}
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_styles.css') }}">
+</head>
+<header>
+    <p>My Flask App</p>
+</header>
+<body>
+  <div>
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+
+<footer>
+    <p>&copy; 2024 My Flask App</p>
+</footer>
+</html>
