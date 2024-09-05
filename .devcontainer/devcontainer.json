@@ -10,7 +10,8 @@
                 "github.copilot",
                 "ms-python.flake8",
                 "mikoz.black-py",
-                "ms-ceintl.vscode-language-pack-ja"
+                "ms-ceintl.vscode-language-pack-ja",
+                "donjayamanne.githistory"
             ]
         }
     }
