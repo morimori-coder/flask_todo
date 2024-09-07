@@ -1,7 +1,16 @@
 from flask import Flask, render_template, jsonify
 from todo.views import todo
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    "mssql+pyodbc://sa:saPassword1234"
+    "@mssql/todoapp?driver=ODBC+Driver+17+for+SQL+Server"
+)
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 app.register_blueprint(todo)
 
