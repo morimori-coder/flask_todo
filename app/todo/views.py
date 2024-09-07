@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from Model.todo import Todo
+from app.Model.todo import Todo
 
 todo = Blueprint("todo", __name__, url_prefix="/todo", template_folder="templates")
 

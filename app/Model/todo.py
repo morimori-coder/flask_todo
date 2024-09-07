@@ -1,10 +1,8 @@
 from sqlalchemy import Column, Integer, DateTime, NVARCHAR, Boolean
-
-# from app.db.db_settings import engine
-from app.db.db_settings import Base
+from app.app import db
 
 
-class Todo(Base):
+class Todo(db.Model):
     """
     TODOリストのモデル
     """

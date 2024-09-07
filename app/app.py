@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify
-from todo.views import todo
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = (
@@ -12,6 +12,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+from app.todo.views import todo
 app.register_blueprint(todo)
 
 # 今後の実装方針
