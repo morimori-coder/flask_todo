@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template
 from app.Model.todo import Todo
 
-todo = Blueprint("todo", __name__, url_prefix="/todo", template_folder="templates")
+todo = Blueprint("todo", __name__, url_prefix="/todo",
+                 template_folder="templates")
 
 
 @todo.route("/", methods=["GET"])
