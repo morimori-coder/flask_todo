@@ -25,10 +25,13 @@ def get_todo():
 
 @todo.route("/add", methods=["POST"])
 def add_todo():
-    description = request.form.get("description")
-    deadline = request.form.get("deadline")
-    status = request.form.get("status")
-    new_todo = Todo(description=description, deadline=deadline, status=status)
-    db.session.add(new_todo)
-    db.session.commit()
+    try:
+        description = request.form["description"]
+        deadline = request.form["deadline"]
+        todo = Todo(description=description, deadline=deadline)
+        db.session.add(todo)
+        db.session.commit()
+    except Exception as e:
+        logger.error(e)
+        db.session.rollback()
     return redirect("/todo")
