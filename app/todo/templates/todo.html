@@ -4,6 +4,10 @@
 
 {% block content %}
 <h1>Todo List</h1>
+<form action="/todo/add" method="post">
+    <input type="text" name="description" placeholder="内容">
+    <input type="date" name="deadline">
+    <input type="submit" value="追加">
 <table>
     <tr>
         <th>内容</th>
