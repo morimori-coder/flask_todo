@@ -2,6 +2,7 @@ from flask import Blueprint, redirect, render_template, request
 from app.Model.todo import Todo
 import logging
 from app.app import db
+from app.todo.logic import check_description_length
 
 todo = Blueprint("todo", __name__, url_prefix="/todo",
                  template_folder="templates")
@@ -27,6 +28,7 @@ def get_todo():
 def add_todo():
     try:
         description = request.form["description"]
+        check_description_length(description)
         deadline = request.form["deadline"]
         todo = Todo(description=description, deadline=deadline)
         db.session.add(todo)
