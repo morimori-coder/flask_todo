@@ -48,3 +48,16 @@ def update_todo():
         logger.error(e)
         db.session.rollback()
     return redirect("/todo")
+
+
+@todo.route("/delete", methods=["POST"])
+def delete_todo():
+    try:
+        todo_id = request.form["id"]
+        todo = Todo.query.filter_by(id=todo_id).first()
+        db.session.delete(todo)
+        db.session.commit()
+    except Exception as e:
+        logger.error(e)
+        db.session.rollback()
+    return redirect("/todo")

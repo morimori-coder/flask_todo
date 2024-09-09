@@ -24,6 +24,12 @@
                     <input type="checkbox" name="status" {% if todo.status %}checked{% endif %} onchange="this.form.submit()">
                 </form>
             </td>
+            <td>
+                <form action="/todo/delete" method="POST">
+                    <input type="hidden" name="id" value="{{ todo.id }}">
+                    <input type="submit" value="削除">
+                </form>
+            </td>
         </tr>
         </tr>
     {% endfor %}
