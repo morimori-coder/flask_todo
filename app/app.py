@@ -25,9 +25,10 @@ root_logger.addHandler(handler)
 logger = logging.getLogger(__name__)
 
 # 今後の実装方針
-# 1. blueprintを使って、ルーティングを分割する
-# 2. flaskのJinja2テンプレートの継承を使って、共通のレイアウトを作成する
-# 3. データベースを使って、TODOリストを管理する
+# descriptionの文字数制限を設ける
+# 上記のために、ロジックを追加する
+# DBアクセスやロジックを分離する
+# テストを書く
 
 
 @app.route("/")
