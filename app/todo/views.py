@@ -35,3 +35,16 @@ def add_todo():
         logger.error(e)
         db.session.rollback()
     return redirect("/todo")
+
+
+@todo.route("/update", methods=["POST"])
+def update_todo():
+    try:
+        todo_id = request.form["id"]
+        todo = Todo.query.filter_by(id=todo_id).first()
+        todo.status = not todo.status
+        db.session.commit()
+    except Exception as e:
+        logger.error(e)
+        db.session.rollback()
+    return redirect("/todo")

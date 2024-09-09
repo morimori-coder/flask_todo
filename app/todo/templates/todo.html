@@ -18,7 +18,12 @@
         <tr>
             <td>{{ todo.description }}</td>
             <td>{{ todo.deadline }}</td>
-            <td><input type="checkbox" {% if todo.status %}checked{% endif %}></td>
+            <td>
+                <form action="/todo/update" method="POST">
+                    <input type="hidden" name="id" value="{{ todo.id }}">
+                    <input type="checkbox" name="status" {% if todo.status %}checked{% endif %} onchange="this.form.submit()">
+                </form>
+            </td>
         </tr>
         </tr>
     {% endfor %}
