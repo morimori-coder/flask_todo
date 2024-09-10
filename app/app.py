@@ -10,6 +10,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
     "mssql+pyodbc://sa:saPassword1234"
     "@mssql/todoapp?driver=ODBC+Driver+17+for+SQL+Server"
 )
+app.secret_key = "secret key"
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

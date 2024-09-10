@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request
+from flask import Blueprint, redirect, render_template, request, flash
 from app.Model.todo import Todo
 import logging
 from app.app import db
@@ -36,6 +36,7 @@ def add_todo():
     except Exception as e:
         logger.error(e)
         db.session.rollback()
+        flash(str(e))
     return redirect("/todo")
 
 
