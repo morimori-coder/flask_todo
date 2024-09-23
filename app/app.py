@@ -15,18 +15,22 @@ root_logger.addHandler(handler)
 logger = logging.getLogger(__name__)
 
 
-def create_app():
+def create_app(sqlite=False):
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = (
-        "mssql+pyodbc://sa:saPassword1234"
-        "@mssql/todoapp?driver=ODBC+Driver+17+for+SQL+Server"
-    )
+    if sqlite:
+        app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+    else:
+        app = Flask(__name__)
+        app.config["SQLALCHEMY_DATABASE_URI"] = (
+            "mssql+pyodbc://sa:saPassword1234"
+            "@mssql/todoapp?driver=ODBC+Driver+17+for+SQL+Server"
+        )
     app.secret_key = "secret key"
 
     # DBとマイグレーションの初期化
     db.init_app(app)
     migrate.init_app(app, db)
-
+    
     # Blueprintの登録
     from app.todo.views import todo
     app.register_blueprint(todo)

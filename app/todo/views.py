@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, redirect, render_template, request, flash
 from app.Model.todo import Todo
 import logging
@@ -29,10 +30,21 @@ def add_todo():
     try:
         description = request.form["description"]
         check_description_length(description)
-        deadline = request.form["deadline"]
+        print(request.form["deadline"])
+        deadline_str = request.form["deadline"]
+        deadline = None
+        if deadline_str is None or deadline_str == "":
+            deadline = datetime.now()
+        else:
+            deadline = datetime.strptime(deadline_str, "%Y-%m-%d")
+
         todo = Todo(description=description, deadline=deadline)
         db.session.add(todo)
         db.session.commit()
+    except ValueError as e:
+        logger.error(e)
+        db.session.rollback()
+        flash(str(e))
     except Exception as e:
         logger.error(e)
         db.session.rollback()
