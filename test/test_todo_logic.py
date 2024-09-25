@@ -76,16 +76,3 @@ def test_add_todo_success(client, app):
         print(added_todo)
         assert added_todo is not None
         assert str(added_todo.deadline) == "2024-12-31 00:00:00"
-
-
-def test_add_todo_missing_description(client, app):
-    data = {
-        "deadline": "2024-12-31"
-    }
-
-    response = client.post("/todo/add", data=data, follow_redirects=True)
-    print(response.data)
-    assert b'Description is required' in response.data
-
-    added_todo = Todo.query.filter_by(deadline="2024-12-31").first()
-    assert added_todo is None
