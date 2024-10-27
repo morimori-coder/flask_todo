@@ -9,7 +9,7 @@ from app.Model.todo import Todo
 from app.todo.logic import check_description_length
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def app():
     app = create_app(sqlite=True)
     app.config.update({
