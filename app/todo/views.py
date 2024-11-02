@@ -28,6 +28,7 @@ def get_todo():
 
 
 @todo.route("/add", methods=["POST"])
+@login_required
 def add_todo():
     try:
         description = request.form["description"]
@@ -55,6 +56,7 @@ def add_todo():
 
 
 @todo.route("/update", methods=["POST"])
+@login_required
 def update_todo():
     try:
         todo_id = request.form["id"]
@@ -68,6 +70,7 @@ def update_todo():
 
 
 @todo.route("/delete", methods=["POST"])
+@login_required
 def delete_todo():
     try:
         todo_id = request.form["id"]
