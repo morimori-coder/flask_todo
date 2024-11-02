@@ -39,7 +39,7 @@ def login():
         # if user and check_password_hash(user.password, password):
         if username and password:
             login_user(User(1, username, password))
-            return redirect(url_for('index'))
+            return redirect(url_for('todo.get_todo'))
         else:
             flash('Invalid username or password')
 

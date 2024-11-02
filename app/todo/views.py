@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import Blueprint, redirect, render_template, request, flash
+from flask_login import login_required
 from app.Model.todo import Todo
 import logging
 from app.app import db
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 @todo.route("/", methods=["GET"])
+@login_required
 def get_todo():
     todos = Todo.query.all()
     todos_list = [
