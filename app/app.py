@@ -2,10 +2,12 @@ from sys import stdout
 from flask import Flask, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_login import LoginManager
 import logging
 
 db = SQLAlchemy()
 migrate = Migrate()
+login_manager = LoginManager()
 # ロガーの設定
 root_logger = logging.getLogger()
 root_logger.setLevel(logging.DEBUG)
@@ -30,10 +32,13 @@ def create_app(sqlite=False):
     # DBとマイグレーションの初期化
     db.init_app(app)
     migrate.init_app(app, db)
-    
+
     # Blueprintの登録
     from app.todo.views import todo
     app.register_blueprint(todo)
+    from app.auth.views import auth_bp
+    app.register_blueprint(auth_bp)
+    login_manager.init_app(app)
 
     # ルートとAPIエンドポイントの定義
     @app.route("/")
